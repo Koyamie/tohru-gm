@@ -246,6 +246,7 @@ declare namespace gm {
         gravity(type?: GravityType): this;
         flatten(): this;
         background(color: string): this;
+        liquidRescale(width: number, height: number): this;
 
         // Command methods from command.js
         write(name: string, callback: (err: Error | null, stdout: string, stderr: string, cmd: string) => void): this;
