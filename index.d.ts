@@ -203,7 +203,7 @@ declare namespace gm {
         rotate(color: string, deg?: number): this;
         flip(): this;
         flop(): this;
-        crop(w: number, h: number, x?: number, y?: number, percent?: boolean): this;
+        crop(w: number | string, h: number | string, x?: number, y?: number, percent?: boolean): this;
         magnify(): this;
         minify(): this;
         quality(val?: number): this;
