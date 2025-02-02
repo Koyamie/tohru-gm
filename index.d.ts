@@ -43,6 +43,7 @@ declare namespace gm {
         // Core methods
         options(options: Options): this;
         in(...args: string[]): this;
+        out(...args: string[]): this;
 
         // These are placeholder method signatures
         // Additional method signatures from lib/ folders would be added here
@@ -272,6 +273,10 @@ declare namespace gm {
         
         // Disposer methods
         addDisposer(emitter: EventEmitter, events: string[]): this;
+
+        // Preprocessor methods
+        preprocessor(...args: string[]): this;
+        _preprocessor: string[];
     }
 
     type GravityType = 'NorthWest' | 'North' | 'NorthEast' | 'West' | 'Center' | 'East' | 'SouthWest' | 'South' | 'SouthEast';
