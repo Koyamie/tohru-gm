@@ -245,6 +245,33 @@ declare namespace gm {
         gravity(type?: GravityType): this;
         flatten(): this;
         background(color: string): this;
+
+        // Command methods from command.js
+        write(name: string, callback: (err: Error | null, stdout: string, stderr: string, cmd: string) => void): this;
+        write(callback: (err: Error | null, stdout: string, stderr: string, cmd: string) => void): this;
+
+        stream(format?: string): Stream;
+        stream(callback: (err: Error | null, stdout: Stream, stderr: Stream, cmd: string) => void): this;
+        stream(format: string, callback: (err: Error | null, stdout: Stream, stderr: Stream, cmd: string) => void): this;
+
+        toBuffer(callback: (err: Error | null, buffer: Buffer) => void): this;
+        toBuffer(format: string, callback: (err: Error | null, buffer: Buffer) => void): this;
+
+        // Internal methods that might be useful for extensions
+        _spawn(args: string[], bufferOutput: boolean, callback: (err: Error | null, stdout: any, stderr: any, cmd: string) => void): this;
+        _exec(args: string[], callback: (err: Error | null, stdout: any, stderr: any) => void): this;
+        _preprocess(callback: (err: Error | null) => void): this;
+        args(): string[];
+        
+        // Source formatting methods
+        addSrcFormatter(formatter: (src: string[]) => void): this;
+        src(): string[];
+        
+        // Input type checking
+        inputIs(type: string): boolean;
+        
+        // Disposer methods
+        addDisposer(emitter: EventEmitter, events: string[]): this;
     }
 
     type GravityType = 'NorthWest' | 'North' | 'NorthEast' | 'West' | 'Center' | 'East' | 'SouthWest' | 'South' | 'SouthEast';
